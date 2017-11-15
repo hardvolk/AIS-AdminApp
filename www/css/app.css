@@ -1,0 +1,297 @@
+
+ /* COLORS */
+@import 'colors.css';
+
+/* HELPERS */
+@import 'helpers.css?v=1.0';
+
+/* Text */
+@import 'text.css';
+
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */    
+    background-attachment:fixed;
+    font-family: 'Roboto', sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    width:100%;
+    position: relative;
+    
+}
+
+/* Portrait layout (default) */
+.app {
+    background:url(../img/tumblr_nk05y6eULy1txe8seo1_500.gif) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+a{
+    text-decoration: none;
+}
+
+
+/***********************************  APP STYLES  **************************/
+/* NAV MENU */
+nav i{
+  height: auto !important; /* correction for materialize default size*/
+}
+
+/* oferta minima pantalla regalos */
+#oferta_regalos{
+    padding: -10px;
+}
+
+/*____Timer______*/
+#timer{
+    float: right;
+    
+    margin-right: 20%;
+}
+
+/*____Encabezado cupon_____*/
+#input_cupon{
+    position: relative top;
+    float:top;
+    width: 20%;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#header-canje{
+    text-align: center;
+}
+
+#header-jornadas{
+    text-align: center;
+    margin-bottom: -14%;
+}
+    
+
+/* Animacion cuando tocas el input de cupon*/
+#input_cupon[type=text]:focus {
+    width: 60%;
+}
+
+
+/* El valor que lleva la subasta, lo que esta entre la animacion */
+.cssload-loader.first{
+    color: red;
+    }
+
+.cssload-loader {
+	height: 49px;
+	font-family: helvetica, arial, sans-serif;
+	font-weight: 900;
+	font-size:150%;
+	color: rgb(206,16,51);
+	letter-spacing: 0.2em;
+}
+.cssload-loader::before, .cssload-loader::after {
+	content: "";
+	display: block;
+	width: 15px;
+	height: 15px;
+	background: rgb(206,66,51);
+	position: relative;
+	animation: cssload-load 0.81s infinite alternate ease-in-out;
+		-o-animation: cssload-load 0.81s infinite alternate ease-in-out;
+		-ms-animation: cssload-load 0.81s infinite alternate ease-in-out;
+		-webkit-animation: cssload-load 0.81s infinite alternate ease-in-out;
+		-moz-animation: cssload-load 0.81s infinite alternate ease-in-out;
+}
+.cssload-loader::before {
+	top: 0;
+}
+.cssload-loader::after {
+	bottom: 0;
+}
+
+@keyframes cssload-load {
+	0% {
+		left: 0;
+		height: 3px;
+		width: 9px;
+	}
+	50% {
+		height: 8px;
+		width: 9px;
+	}
+	100% {
+		left: 50%;
+		height: 15px;
+		width: 9px;
+	}
+}
+
+
+
+/* FUEGO    */
+span {
+  color:white;
+  font-size: 250%;
+  text-transform: lowercase;
+  vertical-align: middle;
+  letter-spacing: .2em;
+}
+
+.fire {
+  animation: animation .2s ease-in-out infinite alternate;
+  -moz-animation: animation .2s ease-in-out infinite alternate;
+  -webkit-animation: animation .1s ease-in-out infinite alternate;
+  -o-animation: animation .1s ease-in-out infinite alternate;
+}
+
+.burn {
+  animation: animation .65s ease-in-out infinite alternate;
+  -moz-animation: animation .65s ease-in-out infinite alternate;
+  -webkit-animation: animation .65s ease-in-out infinite alternate;
+  -o-animation: animation .65s ease-in-out infinite alternate;
+}
+
+@keyframes animation
+{
+0% {text-shadow: 0 0 20px #fefcc9,
+  10px -10px 30px #feec85,
+  -20px -20px 40px #ffae34,
+  20px -40px 50px #ec760c,
+  -20px -60px 60px #cd4606,
+  0 -80px 70px #973716,
+  10px -90px 80px #451b0e;}
+100% {text-shadow: 0 0 20px #fefcc9,
+  10px -10px 30px #fefcc9,
+  -20px -20px 40px #feec85,
+  22px -42px 60px #ffae34,
+  -22px -58px 50px #ec760c,
+  0 -82px 80px #cd4606,
+  10px -90px 80px  #973716;}
+}
+
+@-moz-keyframes animation
+{
+0% {text-shadow: 0 0 20px #fefcc9,
+  10px -10px 30px #feec85,
+  -20px -20px 40px #ffae34,
+  20px -40px 50px #ec760c,
+  -20px -60px 60px #cd4606,
+  0 -80px 70px #973716,
+  10px -90px 80px #451b0e;}
+100% {text-shadow: 0 0 20px #fefcc9,
+  10px -10px 30px #fefcc9,
+  -20px -20px 40px #feec85,
+  22px -42px 60px #ffae34,
+  -22px -58px 50px #ec760c,
+  0 -82px 80px #cd4606,
+  10px -90px 80px  #973716;}
+}
+
+@-webkit-keyframes animation
+{
+0% {text-shadow: 0 0 20px #fefcc9,
+  10px -10px 30px #feec85,
+  -20px -20px 40px #ffae34,
+  20px -40px 50px #ec760c,
+  -20px -60px 60px #cd4606,
+  0 -80px 70px #973716,
+  10px -90px 80px #451b0e;}
+100% {text-shadow: 0 0 20px #fefcc9,
+  10px -10px 30px #fefcc9,
+  -20px -20px 40px #feec85,
+  22px -42px 60px #ffae34,
+  -22px -58px 50px #ec760c,
+  0 -82px 80px #cd4606,
+  10px -90px 80px  #973716;}
+}
+
+@-o-keyframes animation
+{
+0% {text-shadow: 0 0 20px #fefcc9,
+  10px -10px 30px #feec85,
+  -20px -20px 40px #ffae34,
+  20px -40px 50px #ec760c,
+  -20px -60px 60px #cd4606,
+  0 -80px 70px #973716,
+  10px -90px 80px #451b0e;}
+100% {text-shadow: 0 0 20px #fefcc9,
+  10px -10px 30px #fefcc9,
+  -20px -20px 40px #feec85,
+  22px -42px 60px #ffae34,
+  -22px -58px 50px #ec760c,
+  0 -82px 80px #cd4606,
+  10px -90px 80px  #973716;}
+}
+
+
+
+hr.style3 {
+	border-top: 1px dotted #8c8b8b;
+}
+
+.row.with-border{
+    border-bottom: 1px  solid #333;
+}
+
+#logo {
+        max-width: 200px;
+        max-height: 150px;
+        float: right;
+}
+
+#imagen-regalo{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+#boton-regalo{
+    border-radius: 8px;
+}
+
+.miniatura-logo{
+        max-width: 20px;
+        max-height: 20px;
+}
+
+.miniatura-logo-quiniela{
+        max-width: 50px;
+        max-height: 50px;
+}
+
+.miniatura-logo-deportes{
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.icono-moneda{
+    width: 50px; 
+    height: 50px;
+}
+
+.imagen-coleccionable{
+    max-width: 150px;
+    max-height: 150px;
+}

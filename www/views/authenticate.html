@@ -1,0 +1,20 @@
+<div class="row">
+    <h5 class="text-center white-text">Iniciar Sesión</h5>
+    <form class="col s12" name="login_form" role="form" ng-submit="login.checkout()">
+        <div class="row">
+            <div class="input-field col s12 white-text">
+              <input id="user_name" type="email" required 
+                ng-model="login.user" ng-class="{invalid: login.isUserWrong }">
+              <label for="user_name" data-error="wrong" data-success="right">Usuario</label>
+            </div>
+            <div class="input-field col s12 white-text">
+              <input id="user_pass" type="password" required 
+                ng-model="login.pass" ng-class="{invalid: login.isPasswordWrong }">
+              <label for="user_pass" data-error="wrong" data-success="right">Password</label>
+            </div>
+            <button class="btn white black-text right" type="submit" name="action">Entrar
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form> 
+</div>

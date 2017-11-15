@@ -1,0 +1,49 @@
+﻿/*  BACKGROUND COLORS   */
+.blue{
+    background-color: #258dc8;
+}
+
+.green{
+    background-color: #90e416;
+}
+
+.purple{
+    background-color: #9c27b0;
+}
+
+.light-grey {
+    background-color: #f5f5f5;
+}
+
+.grey{
+    background-color: #7A7A7A;
+}
+
+.dark-grey{
+    background-color: #3F3F3F;
+}
+
+/* TEXT COLORS  */
+.text-grey{
+    color: #CCC;
+}
+
+.text-dark-grey{
+    color: #3F3F3F;
+}
+
+.text-white{
+    color: #FFF;
+}
+
+.text-blue{
+    color: #258dc8;
+}
+
+.text-red{
+    color: #CE1010;
+}
+
+.text-green{
+    color: #90e416;
+}
