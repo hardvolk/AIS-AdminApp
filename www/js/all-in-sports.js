@@ -23,7 +23,7 @@ ais.config(function($routeProvider) {
     })
     .when("/winner_bets", {
         templateUrl: "views/winner_bets.html?v=0.0.2",
-        controller : "Eventos-altaController"
+        controller : "winner_betsController"
     })
     .otherwise({ redirectTo: '/authenticate'})
     ;
