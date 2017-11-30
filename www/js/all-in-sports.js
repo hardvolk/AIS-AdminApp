@@ -13,6 +13,18 @@ ais.config(function($routeProvider) {
         templateUrl : "views/eventos.html?v=0.0.0",
         controller : "EventosController"
     })
+    .when("/eventos-ligamx", {
+        templateUrl: "views/eventos-deportes.html?v=0.0.2",
+        controller :"EventosController"
+    })
+    .when("/eventos-nuevo", {
+        templateUrl: "views/eventos-nuevo.html?v=0.0.2",
+        controller : "Eventos-altaController"
+    })
+    .when("/winner_bets", {
+        templateUrl: "views/winner_bets.html?v=0.0.2",
+        controller : "Eventos-altaController"
+    })
     .otherwise({ redirectTo: '/authenticate'})
     ;
 });
