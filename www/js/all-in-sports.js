@@ -50,6 +50,8 @@ ais.run(["$location", "$userAuth", "$user", function($location, $userAuth, $user
 
 /**
 * Service: Makes http request to the server and handles the response
+* In order to send data in your request use:
+*   attribute "data" for POST and "params" for GET
 */
 ais.factory('$requester', ['$http', function($http){
     var request = {
