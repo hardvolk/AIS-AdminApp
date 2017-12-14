@@ -43,7 +43,9 @@
         <input id="first_name" required type="date" class="validate" ng-model="playDate">
     <!-- <label for="first_name">Fecha y hora</label> -->
 
-        <button class="btn waves-effect waves-light" ng-disabled="newEventForm.$dirty || newEventForm.$invalid">
+        <button class="btn waves-effect waves-light" 
+                ng-click="sendFormInfo()"
+                ng-disabled="newEventForm.$dirty || newEventForm.$invalid">
             Guardar
             <i class="material-icons right">send</i>
         </button>
