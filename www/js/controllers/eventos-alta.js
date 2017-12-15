@@ -18,7 +18,7 @@ ais.controller('Eventos-altaController', ['$scope', '$requester', function($scop
     function getSportList()
     {
        $requester.setup({
-            url: 'events/sports',
+            url: 'games/sports',
             method: 'GET',
             showLoadingModal: true
         }).call(function(response){
@@ -32,7 +32,7 @@ ais.controller('Eventos-altaController', ['$scope', '$requester', function($scop
         {
             // Make request to Server
             $requester.setup({
-                url: 'events/tournaments',
+                url: 'games/tournaments',
                 method: 'GET',
                 showLoadingModal: true,
                 params: {sportid: $scope.selectedSport.Id}
@@ -50,7 +50,7 @@ ais.controller('Eventos-altaController', ['$scope', '$requester', function($scop
         {
             // Make request to Server
             $requester.setup({
-                url: 'events/players',
+                url: 'games/players',
                 method: 'GET',
                 showLoadingModal: true,
                 params: {sportid: $scope.selectedSport.Id}
@@ -68,20 +68,21 @@ ais.controller('Eventos-altaController', ['$scope', '$requester', function($scop
         {
             // Make request to Server
             $requester.setup({
-                url: 'events',
+                url: 'games',
                 method: 'POST',
                 showLoadingModal: true,
                 data: {
                     sportid: $scope.selectedSport.Id,
                     tournamentid: $scope.selectedTournament.Id,
-                    num_jornada: $scope.num_jornada,
+                    numjornada: $scope.numjornada,
                     player1: $scope.player1.Id,
                     player2: $scope.player2.Id,
-                    playDate: $scope.playDate,
-                    playTime: $scope.playTime
+                    playdate: $scope.playdate,
+                    isactive: false
                 }
             }).call(function(response){
-                Modal.show("Juego guardado exitosamente");
+                Modal.show(response.data.message);
+                console.log(response.data);
             });
         }
     };
