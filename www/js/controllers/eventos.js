@@ -16,8 +16,25 @@ ais.controller('EventsCreateCtrl', ['$scope', '$requester', function($scope, $re
     $scope.sportList = [];
     $scope.tournsList = [];
     $scope.playerList = [];
-    
-    
+
+    $scope.playdate = "";
+    $scope.time= "";
+
+
+    //Initialization time picker and date picker
+    //date Picker
+    var datepicker = $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15, // Creates a dropdown of 15 years to control year,
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: false, // Close upon selecting a date,
+
+      });
+
+
+ 
     // Calling first function
     getSportList();
 
@@ -73,20 +90,22 @@ ais.controller('EventsCreateCtrl', ['$scope', '$requester', function($scope, $re
     {
         if(this.newEventForm.$valid)
         {
+            var info = {
+                sportid: $scope.selectedSport.Id,
+                tournamentid: $scope.selectedTournament.Id,
+                numjornada: $scope.numjornada,
+                player1: $scope.player1.Id,
+                player2: $scope.player2.Id,
+                playdate: datepicker.pickadate('picker').get('select','yyyy-mm-dd') + " " + $scope.time,
+                isactive: false
+            };
+            console.log(info);
             // Make request to Server
             $requester.setup({
                 url: 'games',
                 method: 'POST',
                 showLoadingModal: true,
-                data: {
-                    sportid: $scope.selectedSport.Id,
-                    tournamentid: $scope.selectedTournament.Id,
-                    numjornada: $scope.numjornada,
-                    player1: $scope.player1.Id,
-                    player2: $scope.player2.Id,
-                    playdate: $scope.playdate,
-                    isactive: false
-                }
+                data: info
             }).call(function(response){
                 Modal.show(response.data.message);
                 console.log(response.data);
