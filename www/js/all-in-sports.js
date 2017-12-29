@@ -13,7 +13,7 @@ ais.config(function($routeProvider) {
         templateUrl : "views/eventos.html?v=0.0.0",
         //controller : "EventosController"
     })
-    .when("/eventos-ligamx", {
+    .when("/eventos/:sportid", {
         templateUrl: "views/eventos-deportes.html?v=0.0.2",
         controller :"EventsSelectCtrl"
     })
