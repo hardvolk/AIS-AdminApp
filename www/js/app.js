@@ -42,13 +42,17 @@ var app = {
         console.log('Received Event: ' + id);
     },
 
-    // REMOTE API URL
-     API_URL: 'http://all-insports.net/API/',
-    // LOCAL URL * REMOVE ON PRODUCTION *
-    // API_URL: 'http://localhost/_All-In-Sports-Backend/public/',
+    /* REMOTE API URL */
+    // API_URL: 'http://all-insports.net/API/',
+    
+    /* LOCAL URL * REMOVE ON PRODUCTION */
+     API_URL: 'http://localhost/_All-In-Sports-Backend/public/',
 
      /* USER TOKEN */
      TOKEN: 'ZmlkZWxAbWFpbC5jb206OjE1MDg5NDU5OTk=',
+
+     /* TEAM IMAGE URL*/
+     TEAM_IMG: 'http://all-insports.net/Files/teams/'
 };
 
 app.initialize();

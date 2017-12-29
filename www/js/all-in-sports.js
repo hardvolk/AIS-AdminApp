@@ -15,7 +15,8 @@ ais.config(function($routeProvider) {
     })
     .when("/eventos/:sportid", {
         templateUrl: "views/eventos-deportes.html?v=0.0.2",
-        controller :"EventsSelectCtrl"
+        controller :"EventsSelectCtrl",
+        controllerAs: "vm"
     })
     .when("/eventos-nuevo", {
         templateUrl: "views/eventos-nuevo.html?v=0.0.2",

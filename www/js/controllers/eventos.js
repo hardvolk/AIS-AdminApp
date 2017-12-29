@@ -1,8 +1,55 @@
 
-// Route: /eventos-ligamx
-ais.controller('EventsSelectCtrl', ['$scope', '$requester', function($scope, $requester){
-    
-}]);
+// Route: /eventos/:sportid
+ais.controller('EventsSelectCtrl', function($requester, $routeParams){
+    var vm = this;
+    vm.sport = {skip_items: 0};
+    vm.games = [];
+    vm.tournaments = [];
+    vm.teamImgUrl = app.TEAM_IMG;
+    vm.hideBtn = true;
+
+    vm.getSportInfo = function(){
+        $requester.setup({
+            url: 'games/get-sport-info/' + $routeParams.sportid,
+            method: "GET"
+        }).call(function(response){
+            vm.sport = response.data;
+            if(vm.sport.HasTournaments == 1) vm.getTournaments();
+        });
+    };
+
+    vm.getTournaments = function (){
+        $requester.setup({
+            url: 'games/tournaments',
+            method: 'GET',
+            showLoadingModal: true,
+            params: {sportid: vm.sport.Id}
+        }).call(function(response){
+            vm.tournaments = response.data;
+        });        
+    };
+
+    vm.getGames = function(){
+        vm.sport.sportid = vm.sport.Id;
+        if(vm.sport.HasTournaments == 1)
+            vm.sport.tournamentid = vm.sport.selectedTournament.Id;
+        $requester.setup({
+            url: 'games/by-sport',
+            method: 'GET',
+            showLoadingModal: true,
+            params: vm.sport
+        }).call(function(response){
+            if(response.data.length > 0){
+                angular.extend(vm.games, response.data);
+                //vm.game = vm.games.concat(response.data);
+                vm.sport.skip_items += vm.games.length;
+                console.log(vm.games);
+            } else vm.hideBtn = true;           
+            
+        }); 
+    };
+});
+
 
 // Route: /eventos-nuevo
 ais.controller('EventsCreateCtrl', ['$scope', '$requester', function($scope, $requester){

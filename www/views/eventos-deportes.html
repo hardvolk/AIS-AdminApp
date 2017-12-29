@@ -1,29 +1,66 @@
+<div ng-init="vm.getSportInfo()"></div>
+<div class="container">
+  <h3 class="white-text">{{ vm.sport.Name }}</h3>
 
-<div class= "white-text container">
-<p>sdfsdff</p>
+  <form name="gamesQueryForm">
+    <!-- TOURNAMENTS -->
+    <select class="browser-default" 
+      ng-show="vm.sport.HasTournaments == 1" 
+      ng-required="vm.sport.HasTournaments == 1"
+      ng-model="vm.sport.selectedTournament"
+      ng-options="tourn as tourn.Name for tourn in vm.tournaments track by tourn.Id">
+      <option value="">-- Selecciona un torneo</option>
 
+    </select>
 
+    <!-- JORNADAS -->
+    <select class="browser-default" 
+      ng-show="vm.sport.HasJornadas == 1" 
+      ng-required="vm.sport.HasJornadas == 1" 
+      ng-model="vm.sport.numjornada">
+      <option value="">-- Selecciona la jornada</option>
+      <option value="1">Jornada 1</option>
+      <option value="2">Jornada 2</option>
+      <option value="3">Jornada 3</option>
+      <option value="4">Jornada 4</option>
+      <option value="5">Jornada 5</option>
+      <option value="6">Jornada 6</option>
+      <option value="7">Jornada 7</option>
+      <option value="8">Jornada 8</option>
+      <option value="9">Jornada 9</option>
+      <option value="10">Jornada 10</option>
+      <option value="11">Jornada 11</option>
+      <option value="12">Jornada 12</option>
+      <option value="13">Jornada 13</option>
+      <option value="14">Jornada 14</option>
+      <option value="15">Jornada 15</option>
+      <option value="16">Jornada 16</option>
+      <option value="17">Jornada 17</option>
+    </select>
 
-<div class="input-field col s12">
-<select>
-  <option value="" disabled selected>Selecciona la jornada</option>
-  <option value="Jornada 1">Jornada 1</option>
-  <option value="Jornada 2">Jornada 2</option>
-  <option value="Jornada 3">Jornada 3</option>
-  <option value="Jornada 4">Jornada 4</option>
-  <option value="Jornada 5">Jornada 5</option>
-  <option value="Jornada 6">Jornada 6</option>
-  <option value="Jornada 7">Jornada 7</option>
-  <option value="Jornada 8">Jornada 8</option>
-  <option value="Jornada 9">Jornada 9</option>
-  <option value="Jornada 10">Jornada 10</option>
-  <option value="Jornada 11">Jornada 11</option>
-  <option value="Jornada 12">Jornada 12</option>
-  <option value="Jornada 13">Jornada 13</option>
-  <option value="Jornada 14">Jornada 14</option>
-  <option value="Jornada 15">Jornada 15</option>
-  <option value="Jornada 16">Jornada 16</option>
-  <option value="Jornada 17">Jornada 17</option>
-</select>
+    <!-- SEARCH BUTTON -->
+    <div class="center row top-gap">
+      <button class="btn waves-effect waves-light" 
+        ng-click="vm.hideBtn=false; vm.sport.skip_items=0; vm.getGames()"
+        ng-disabled="gamesQueryForm.$invalid">
+        Buscar Eventos
+        <i class="material-icons right">send</i>
+      </button>
+    </div>    
+  </form>
 
+  <!-- GAMES LIST -->
+  <ul class="collection">
+      <li class="collection-item avatar" ng-repeat="game in vm.games track by game.Id">
+          <img src="{{ vm.teamImgUrl + game.Player1Image }}" alt="" class="circle">
+          <img src="{{ vm.teamImgUrl + game.Player2Image }}" alt="" class="circle" style="top: 40px;left: 25px;">
+          <span class="text-dark-grey title">
+            <b>{{ game.Player1Name }} </b> vs <b> {{ game.Player2Name }} </b> </span>
+          <p>{{ game.PlayDate }} <br>
+            {{ game.IsActive == "1" ? "Activo" : "Desactivado" }}
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">border_color</i></a>
+      </li>
+  </ul>
+  <h6 class="text-blue text-center" ng-show="!vm.hideBtn" ng-click="vm.getGames()">VER MAS</h6>
 </div>
