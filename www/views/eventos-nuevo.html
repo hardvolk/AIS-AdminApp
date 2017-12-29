@@ -1,5 +1,5 @@
 
-<div class="container input-field col s12">
+<div class="container row input-field">
     <form name="newEventForm">    
         <select class="browser-default" required
                 ng-options="sport as sport.Name for sport in sportList track by sport.Id"
@@ -38,28 +38,25 @@
             <option value="17">17</option>
         </select>
 
-
-        <div class="input-field col s6">
             <select class="browser-default" required
                     ng-options="player as player.Name for player in playerList track by player.Id"
                     ng-model="player1"
                     ng-disabled="selectedSport == null || selectedSport == ''">
                     <option value="" disabled selected>-- Local (Player 1)</option>
             </select>
-        </div>
 
-        <div class="input-field col s6">
             <select class="browser-default" required
                     ng-options="player as player.Name for player in playerList track by player.Id"
                     ng-model="player2"
                     ng-disabled="selectedSport == null || selectedSport == ''">
                 <option value="" disabled selected>-- Visitante (Player 2)</option>
             </select>
-        </div>
-
-        <input id="first_name" required type="date" class="validate" ng-model="playdate">
-    <!-- <label for="first_name">Fecha y hora</label> -->
-
+ 
+<div class="white-text">
+        <input type="text" class="datepicker" class="validate" ng-model="playdate">
+        
+        <input type="text" ng-model="time">   
+</div>
         <button class="btn waves-effect waves-light" 
                 ng-click="sendFormInfo()"
                 ng-disabled="newEventForm.$invalid">
